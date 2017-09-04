@@ -1,0 +1,45 @@
+<div class='row'>
+    <div class='col-sm-8 col-sm-offset-2'>
+<div class="page-header">
+  <h1>{{ post.title }} <small>{{ post.publishDate }}</small></h1>
+</div>
+<span ng-if='post.image'>
+<img ng-src='{{ post.image }}' class='img-responsive'> <br/>
+</span>
+
+<p markdown-to-html='post.content'>{{ post.content }}</p>
+<hr/>
+
+
+<div class='row' ng-show='comments.length > 0'>
+    <div class='col-sm-6'>
+        <h3>Options</h3>
+    </div>
+
+</div>
+
+        <br/>
+<div class='row'>
+    <div class='col-sm-12' ng-repeat='comment in comments | orderBy: commentOrder | filter: query'>
+            <input type="checkbox" ng-model="comment.isSelected" ng-change="value(item.isSelected, comment)" />{{comment.content}} {{comment.cost}} USD
+            <br/>
+            <hr/>
+    </div>
+    
+</div>
+
+<div class='row'>
+    <div class='col-sm-6'>
+        <h3>Total price: {{ getTotal() }}</h3>
+
+    </div>
+
+</div>
+
+
+
+
+     
+
+    </div>
+</div>
